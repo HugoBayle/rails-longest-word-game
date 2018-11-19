@@ -9,7 +9,7 @@ class GamesController < ApplicationController
   def score
     url = 'https://wagon-dictionary.herokuapp.com/' + params[:word]
     word = open(url).read
-    word_verification = JSON.parse(word)
+    word_verification = JSON.parse(word)n
     if word_verification['found'] == false
       @result = {message: "Sorry but #{params[:word].upcase} doesn't seem to be a valid English word...", score: 0}
     elsif word_verification['found'] == true && (params[:word].upcase.chars.all? { |letter| params[:word].upcase.count(letter) <= params[:letters].count(letter) }) == false
